@@ -49,38 +49,36 @@ function createNode(elemType, stringContent) {
 }
 
 function addActivity(btn, activity) {
+      btn.addEventListener("click", (e) => {
+      
+        fetch("http://localhost:3000/api/v1/user_activities", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_activities: {
+              user_id: 30,
+              activity_id: activity.id,
+            },
+          }),
+        })
+          .then((resp) => resp.text())
+          .then((data) => {
+            persistsData({name: activity.name, id: data.id})
+          }); 
+      });
+    }
+
+function deleteActivity( btn,id,activity) {
   btn.addEventListener("click", (e) => {
-    let newActivity = createNode("li", activity.name)
-    let deleteBtn = createNode("button", "delete")
-    deleteBtn.dataset.id = activity.id;
-    //    console.log(activity.id)
-    fetch("http://localhost:3000/api/v1/user_activities", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_activities: {
-          user_id: 30,
-          activity_id: activity.id,
-        },
-      }),
+    
+    fetch(`http://localhost:3000/api/v1/user_activities/${id}`,{
+        method: "DELETE"
     })
-      .then((resp) => resp.text())
-      .then((data) => {
-        console.log(data);
-      });
-
-    newActivity.append(deleteBtn);
-    userList.append(newActivity);
-    deleteActivity(deleteBtn, activity, newActivity);
-  });
-}
-
-function deleteActivity(btn, activity, newActivity) {
-  btn.addEventListener("click", (e) => {
-    console.log("delete click");
-    newActivity.remove();
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+     activity.remove();
   });
 }
 
@@ -92,33 +90,39 @@ function randomActivity(activityObj) {
   });
 }
 
-const allUsers = () => {
-  fetch("http://localhost:3000/api/v1/users")
-    .then((resp) => resp.json())
-    .then((userObj) => renderUser(userObj));
-};
-
 function renderUser(data) {
-  data.forEach((user) => {
-    userName.innerHTML = user.username;
-  });
+    userName.innerHTML = data.username;
 }
 
+function renderUserActivity({user_activities}){
+    user_activities.forEach(fetchUserActivity)  
+}
+
+function fetchUserAndActivities(id){
+    fetch(`http://localhost:3000/api/v1/users/${id}`)
+    .then(resp => resp.json())
+    .then(data => {
+        renderUser(data)
+        renderUserActivity(data)
+    })
+}
+
+function persistsData({name, id}){
+        let newActivity = createNode("li", name)
+        let deleteBtn = createNode("button", "delete")
+        newActivity.append(deleteBtn);
+        userList.append(newActivity);
+        deleteActivity(deleteBtn, id, newActivity); 
+    }
+
+    function fetchUserActivity({activity_id, id}){
+            fetch(`http://localhost:3000/api/v1/activities/${activity_id}`)
+            .then(resp => resp.json())
+            .then(data => persistsData({name: data.name, id: id}))
+        }
+        
+
 allActivities();
-allUsers();
+fetchUserAndActivities(30)
 
-// const options = {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'Accept': 'application/json'
-//   },
-//   body: JSON.stringify({
-//       user_id: 1,
-//       activity_id: 1
-//   }),
-// }
 
-// fetch("http://localhost:3000/api/v1/user_activities", options)
-// .then(resp => resp.json())
-// .then(data => console.log("it worked"))
