@@ -15,14 +15,10 @@ const allActivities = () => {
   fetch("http://localhost:3000/api/v1/activities")
     .then((resp) => resp.json())
     .then((activityObj) => {
-        console.log(activityObj)
-        renderActivity(activityObj)
-        randomActivity(activityObj)
+      renderActivity(activityObj);
+      randomActivity(activityObj);
     });
 };
-
-
-
 
 function renderActivity(data) {
   data.forEach((activity) => {
@@ -33,7 +29,6 @@ function renderActivity(data) {
     activityList.append(li);
     renderActivityInfo(activity);
     addActivity(addBtn, activity);
-    allUsers();
   });
 }
 
@@ -54,9 +49,36 @@ function createNode(elemType, stringContent) {
 }
 
 function addActivity(btn, activity) {
+      btn.addEventListener("click", (e) => {
+      
+        fetch("http://localhost:3000/api/v1/user_activities", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_activities: {
+              user_id: 30,
+              activity_id: activity.id,
+            },
+          }),
+        })
+          .then((resp) => resp.text())
+          .then((data) => {
+            persistsData({name: activity.name, id: data.id})
+          }); 
+      });
+    }
+
+function deleteActivity( btn,id,activity) {
   btn.addEventListener("click", (e) => {
-    let li = createNode("li", activity.name);
-    userList.append(li);
+    
+    fetch(`http://localhost:3000/api/v1/user_activities/${id}`,{
+        method: "DELETE"
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+     activity.remove();
   });
 }
 
@@ -68,16 +90,39 @@ function randomActivity(activityObj) {
   });
 }
 
-const allUsers = () => {
-  fetch("http://localhost:3000/api/v1/users")
-    .then((resp) => resp.json())
-    .then((userObj) => renderUser(userObj));
-};
-
 function renderUser(data) {
-  data.forEach((user) => {
-    userName.innerHTML = user.username;
-  });
+    userName.innerHTML = data.username;
 }
 
+function renderUserActivity({user_activities}){
+    user_activities.forEach(fetchUserActivity)  
+}
+
+function fetchUserAndActivities(id){
+    fetch(`http://localhost:3000/api/v1/users/${id}`)
+    .then(resp => resp.json())
+    .then(data => {
+        renderUser(data)
+        renderUserActivity(data)
+    })
+}
+
+function persistsData({name, id}){
+        let newActivity = createNode("li", name)
+        let deleteBtn = createNode("button", "delete")
+        newActivity.append(deleteBtn);
+        userList.append(newActivity);
+        deleteActivity(deleteBtn, id, newActivity); 
+    }
+
+    function fetchUserActivity({activity_id, id}){
+            fetch(`http://localhost:3000/api/v1/activities/${activity_id}`)
+            .then(resp => resp.json())
+            .then(data => persistsData({name: data.name, id: id}))
+        }
+        
+
 allActivities();
+fetchUserAndActivities(30)
+
+
