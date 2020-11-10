@@ -15,14 +15,10 @@ const allActivities = () => {
   fetch("http://localhost:3000/api/v1/activities")
     .then((resp) => resp.json())
     .then((activityObj) => {
-        console.log(activityObj)
-        renderActivity(activityObj)
-        randomActivity(activityObj)
+      renderActivity(activityObj);
+      randomActivity(activityObj);
     });
 };
-
-
-
 
 function renderActivity(data) {
   data.forEach((activity) => {
@@ -33,7 +29,6 @@ function renderActivity(data) {
     activityList.append(li);
     renderActivityInfo(activity);
     addActivity(addBtn, activity);
-    allUsers();
   });
 }
 
@@ -55,8 +50,37 @@ function createNode(elemType, stringContent) {
 
 function addActivity(btn, activity) {
   btn.addEventListener("click", (e) => {
-    let li = createNode("li", activity.name);
-    userList.append(li);
+    let newActivity = createNode("li", activity.name)
+    let deleteBtn = createNode("button", "delete")
+    deleteBtn.dataset.id = activity.id;
+    //    console.log(activity.id)
+    fetch("http://localhost:3000/api/v1/user_activities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_activities: {
+          user_id: 30,
+          activity_id: activity.id,
+        },
+      }),
+    })
+      .then((resp) => resp.text())
+      .then((data) => {
+        console.log(data);
+      });
+
+    newActivity.append(deleteBtn);
+    userList.append(newActivity);
+    deleteActivity(deleteBtn, activity, newActivity);
+  });
+}
+
+function deleteActivity(btn, activity, newActivity) {
+  btn.addEventListener("click", (e) => {
+    console.log("delete click");
+    newActivity.remove();
   });
 }
 
@@ -81,3 +105,20 @@ function renderUser(data) {
 }
 
 allActivities();
+allUsers();
+
+// const options = {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Accept': 'application/json'
+//   },
+//   body: JSON.stringify({
+//       user_id: 1,
+//       activity_id: 1
+//   }),
+// }
+
+// fetch("http://localhost:3000/api/v1/user_activities", options)
+// .then(resp => resp.json())
+// .then(data => console.log("it worked"))
