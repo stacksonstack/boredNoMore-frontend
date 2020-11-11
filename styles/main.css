@@ -1,0 +1,117 @@
+.activities-grid{
+    display: grid;
+    grid-template-areas: "random-btn"
+                         "activity-list";
+
+}
+
+#random-btn{
+    grid-area: random-btn;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#activity-list{
+    grid-area: activity-list;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    
+}
+.li-activity{
+    padding: 20px;
+    background-color: cadetblue;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.activity-grid{
+    display: grid;
+    grid-template-areas: "activity-name activity-name"
+                         "activity-type activity-access"
+                         "activity-part activity-link"
+                         "activity-price add-activity2";
+    background-color: grey;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#activity-name2{
+    grid-area: activity-name;
+    text-align: center;
+}
+
+#activity-type2{
+    grid-area: activity-type;
+    padding-left: 25px;
+}
+
+#activity-participants2{
+    grid-area: activity-part;
+    padding-left: 25px;
+}
+
+#activity-price2{
+    grid-area: activity-price;
+    padding-left: 25px;
+}
+
+#activity-link2{
+    grid-area: activity-link;
+}
+
+#activity-access2{
+    grid-area: activity-access;
+}
+#add-activity2{
+    grid-area: add-activity2;
+}
+#add-activity{
+    width: 150px;
+    height: 30px;
+    
+}
+
+html{
+    background-color: #FFF8E7;
+}
+
+#rand-btn{
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-areas: "username2"
+                         "user-list2";
+}
+#username2{
+    grid-area: username2;
+    text-align: center;
+}
+#user-list2{
+    grid-area: user-list2;
+
+}
+#user-list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 20px;
+    background-color: cadetblue;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+    justify-content: space-evenly;
+}
+/* #new-li{
+    margin: 50px;
+}  */
