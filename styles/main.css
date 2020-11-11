@@ -1,3 +1,7 @@
+@font-face {
+    font-family: pureJoy;
+    src: url("Pure Joy.ttf");
+}
 .activities-grid{
     display: grid;
     grid-template-areas: "random-btn"
@@ -17,14 +21,18 @@
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    
+    margin-left: auto;
+    margin-right: auto; 
 }
+
 .li-activity{
     padding: 20px;
-    background-color: cadetblue;
+    background-color: #d1d7e0;
     margin: 10px;
     width: 200px;
     text-align: center;
+    opacity: .9;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .activity-grid{
@@ -33,11 +41,33 @@
                          "activity-type activity-access"
                          "activity-part activity-link"
                          "activity-price add-activity2";
-    background-color: grey;
+    background-color: #d1d7e0;
+    opacity: .9;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
 
+}
+
+.add-btn{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color: #564f6f;
+    color: #d1d7e0;
+    opacity: .9;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    
+}
+
+.delete-btn{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    padding-left:40px;
+    padding-right:40px;
+    padding-top: 5px;
+    padding-bottom:5px;
+    background-color: #564f6f;
+    color: #d1d7e0;
+    opacity: .9;
 }
 
 #activity-name2{
@@ -73,18 +103,33 @@
 #add-activity{
     width: 150px;
     height: 30px;
+    background-color: #564f6f;
+    color: #d1d7e0;
+    opacity: .9;
     
 }
 
-html{
-    background-color: #FFF8E7;
+
+h1{
+    text-align: center;
+    color: #802bb1;
+    font-size: 100px;
+    font-family: pureJoy;
 }
 
 #rand-btn{
-    width: 200px;
-    height: 50px;
-    font-size: 20px;
+    width: 305px;
+    height: 60px;
+    font-size: 30px;
     font-weight: bold;
+    margin-top: 25px;
+    
+    font-family: pureJoy;
+    color: #802bb1;
+    opacity: .9;
+    background-color: #2d283e;
+    border-color: #d1d7e0;
+    border-width: 8px;
 }
 
 .wrapper{
@@ -98,20 +143,89 @@ html{
 }
 #user-list2{
     grid-area: user-list2;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
 
 }
 #user-list{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    list-style-position: inside;
     list-style-type: none;
-    padding: 20px;
-    background-color: cadetblue;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    text-align: center;
-    justify-content: space-evenly;
+    
+
 }
-/* #new-li{
-    margin: 50px;
-}  */
+/* #user-list3{
+    display: inline-block;  
+    text-align: left;
+    
+} */
+
+.new-li{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #d1d7e0;
+    opacity: .9;
+    margin-bottom: 10px;
+    width: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+} 
+
+.nav {
+    background-color:rgb(255,255,255, .7);
+    height: 40px;
+    width: 85%;
+    margin: 0px auto;
+    border-style: solid;
+   border-color: white;
+   width: 85%;
+   color: #003A70;
+   background: rgb(255,255,255), .5;
+  
+  }
+  
+   .nav li {
+     /* border: 1px solid black; */
+     display: inline-block;
+     line-height: 40px;
+     padding: 0px 15px;
+     margin: 0px;
+     color: #003A70;
+     font-family: Arial, Helvetica, sans-serif;
+  
+   }
+
+   p{
+       color: #2d283e;
+       font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+   }
+
+   h3{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+   }
+
+html{
+    background-color: #2d283e;
+}
+   /* .nav li:link{
+     color: #CC0000;
+   }
+   .nav li:hover {
+     background-color: #3D7DCA;;
+     transition: 1s;
+   }
+  
+   .nav li a {
+    text-decoration: none;
+    color: color: #003A70;
+    font-weight: 800;
+  } */
+  

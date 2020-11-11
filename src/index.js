@@ -25,6 +25,7 @@ function renderActivity(data) {
     let li = createNode("li", activity.name);
     li.className = "li-activity";
     let addBtn = createNode("button", "Add Activity");
+    addBtn.className = "add-btn"
     let br = createNode("p", "");
     li.append(br, addBtn);
     activityList.append(li);
@@ -110,7 +111,9 @@ function persistsData({ name, id }) {
   let newActivity = createNode("li", name);
   newActivity.className = "new-li";
   let deleteBtn = createNode("button", "Delete");
-  newActivity.append(deleteBtn);
+  deleteBtn.className = "delete-btn"
+  let newBr = createNode("p", "");
+  newActivity.append(newBr, deleteBtn);
   userList.append(newActivity);
   deleteActivity(deleteBtn, id, newActivity);
 }
