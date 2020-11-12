@@ -11,6 +11,13 @@ const userName = document.getElementById("username");
 const userList = document.getElementById("user-list");
 const randomBtn = document.getElementById("random-btn");
 
+const showAllActivities = document.getElementById("all-activities");
+const userActivities = document.getElementById("user-activities");
+
+const randomActivityGrid = document.querySelector(".activity-grid");
+const userActivityList = document.querySelector(".wrapper");
+const allActivitiesGrid =document.querySelector(".activities-grid")
+
 const allActivities = () => {
   fetch("http://localhost:3000/api/v1/activities")
     .then((resp) => resp.json())
@@ -83,7 +90,9 @@ function deleteActivity(btn, id, activity) {
 
 function randomActivity(activityObj) {
   randomBtn.addEventListener("click", (e) => {
-    console.log("Random Click");
+    randomActivityGrid.style.display = "block";
+    allActivitiesGrid.style.display = "none";
+    userActivityList.style.display = "none";
     let random = activityObj[Math.floor(Math.random() * activityObj.length)];
     renderActivityInfo(random);
     addActivity(addBtn2, random);
@@ -124,5 +133,29 @@ function fetchUserActivity({ activity_id, id }) {
     .then((data) => persistsData({ name: data.name, id: id }));
 }
 
+function AllActivitiesPage(){
+    showAllActivities.addEventListener("click", (e) => {
+        randomActivityGrid.style.display = "none";
+        userActivityList.style.display = "none";
+        allActivitiesGrid.style.display = "block"
+        console.log("all")
+    })
+}
+function landingPage(){
+  userActivityList.style.display = "none";
+  randomActivityGrid.style.display = "none"
+}
+
+function UserActivitiesPage(){
+  userActivities.addEventListener('click', (e) => {
+    randomActivityGrid.style.display = "none"
+    allActivitiesGrid.style.display = "none"
+    userActivityList.style.display = "block"
+  })
+}
+
+landingPage();
 allActivities();
 fetchUserAndActivities(30);
+AllActivitiesPage();
+UserActivitiesPage();

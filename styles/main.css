@@ -17,12 +17,19 @@
 }
 
 #activity-list{
-    grid-area: activity-list;
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    justify-content: center;
+ 
+}
+#activity-list2{
+    grid-area: activity-list;
+    display: block;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
+    width: 100%;
+    justify-self: center;
 }
 
 .li-activity{
@@ -130,12 +137,16 @@ h1{
     background-color: #2d283e;
     border-color: #d1d7e0;
     border-width: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper{
     display: grid;
     grid-template-areas: "username2"
                          "user-list2";
+
 }
 #username2{
     grid-area: username2;
@@ -146,6 +157,8 @@ h1{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    width: 70%;
+    justify-self: center;
     
     
 
@@ -185,10 +198,10 @@ h1{
     width: 85%;
     margin: 0px auto;
     border-style: solid;
-   border-color: white;
-   width: 85%;
-   color: #003A70;
-   background: rgb(255,255,255), .5;
+    border-color: white;
+    width: 85%;
+    color: #003A70;
+    background: rgb(255,255,255), .5;
   
   }
   
@@ -214,6 +227,10 @@ h1{
 
 html{
     background-color: #2d283e;
+}
+
+ul {
+    padding-inline-start: 0px;
 }
    /* .nav li:link{
      color: #CC0000;
