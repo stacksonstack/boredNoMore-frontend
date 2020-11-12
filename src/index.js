@@ -14,7 +14,7 @@ const randomBtn = document.getElementById("random-btn");
 const showAllActivities = document.getElementById("all-activities");
 const userActivities = document.getElementById("user-activities");
 
-const randomActivityGrid = document.querySelector(".activity-grid");
+const randomActivityGrid = document.querySelector(".activity-page");
 const userActivityList = document.querySelector(".wrapper");
 const allActivitiesGrid =document.querySelector(".activities-grid")
 
@@ -141,6 +141,7 @@ function AllActivitiesPage(){
         console.log("all")
     })
 }
+
 function landingPage(){
   userActivityList.style.display = "none";
   randomActivityGrid.style.display = "none"

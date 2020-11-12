@@ -6,7 +6,6 @@
     display: grid;
     grid-template-areas: "random-btn"
                          "activity-list";
-
 }
 
 #random-btn{
@@ -21,8 +20,8 @@
     flex-wrap: wrap;
     list-style-type: none;
     justify-content: center;
- 
 }
+
 #activity-list2{
     grid-area: activity-list;
     display: block;
@@ -44,8 +43,7 @@
 
 .activity-grid{
     display: grid;
-    grid-template-areas: "activity-name activity-name"
-                         "activity-type activity-access"
+    grid-template-areas: "activity-type activity-access"
                          "activity-part activity-link"
                          "activity-price add-activity2";
     background-color: #d1d7e0;
@@ -53,7 +51,6 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .add-btn{
@@ -63,7 +60,6 @@
     opacity: .9;
     padding-top: 3px;
     padding-bottom: 3px;
-    
 }
 
 .delete-btn{
@@ -75,11 +71,6 @@
     background-color: #564f6f;
     color: #d1d7e0;
     opacity: .9;
-}
-
-#activity-name2{
-    grid-area: activity-name;
-    text-align: center;
 }
 
 #activity-type2{
@@ -104,18 +95,18 @@
 #activity-access2{
     grid-area: activity-access;
 }
+
 #add-activity2{
     grid-area: add-activity2;
 }
+
 #add-activity{
     width: 150px;
     height: 30px;
     background-color: #564f6f;
     color: #d1d7e0;
-    opacity: .9;
-    
+    opacity: .9;  
 }
-
 
 h1{
     text-align: center;
@@ -223,6 +214,13 @@ h1{
 
    h3{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+    font-size: 50px;
+    color: #d1d7e0;
+    font-family: pureJoy;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
    }
 
 html{
@@ -232,6 +230,28 @@ html{
 ul {
     padding-inline-start: 0px;
 }
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrap {
+    padding-bottom: 2.5rem;  
+    text-align: center;  
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+    width: 100%;
+    background-color: #2d283e;
+    text-align: center;
+}
+
+footer p{
+    color: #d1d7e0;
+    
+}
+
    /* .nav li:link{
      color: #CC0000;
    }
