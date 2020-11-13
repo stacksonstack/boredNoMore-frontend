@@ -1,4 +1,3 @@
-//document.addEventListener('DOMContentLoaded', () => {
 let activityList = document.getElementById("activity-list");
 let activityName = document.getElementById("activity-name");
 let activityType = document.getElementById("activity-type");
@@ -27,7 +26,10 @@ const loginPage = document.getElementById("login-page");
 const signupPage = document.getElementById("signup-page");
 const signupBtn = document.getElementById("signup-button");
 const logout = document.getElementById("logout"); 
-let userId
+const welcome = document.getElementById("welcome");
+const loginBtn = document.getElementById("login-button");
+//const success = document.getElementById("account-success");
+let userId;
 
 const allActivities = () => {
   fetch("http://localhost:3000/api/v1/activities")
@@ -37,6 +39,7 @@ const allActivities = () => {
       randomActivity(activityObj);
     });
 };
+
 function loginUser(){
     formLogin.addEventListener("submit", (e) => {
         e.preventDefault()
@@ -48,9 +51,6 @@ function loginUser(){
                     userId = user.id;
                     fetchUserAndActivities(userId);
                 }
-                else{
-                    console.log("didnt work")
-                }
             })
         })
         userActivityList.style.display = "none";
@@ -58,8 +58,10 @@ function loginUser(){
         allActivitiesGrid.style.display = "block";
         loginPage.style.display = "none";
         signupPage.style.display = "none";
-        logout.innerHTML = "Log Out"
-        userActivities.innerHTML = "My Activities"
+        logout.style.display = "inline-block";
+        userActivities.style.display = "inline-block";
+        welcome.style.display = "none";
+        showAllActivities.style.display = "inline-block";
     })   
 }
 
@@ -70,12 +72,13 @@ function logoutButton(){
     allActivitiesGrid.style.display = "none";
     loginPage.style.display = "block";
     signupPage.style.display = "none";
-    logout.innerHTML = " "
+    logout.style.display = "none";
     userId = null;
-    userActivities.innerHTML = " "
-    console.log("logged out")
-    
-})}
+    userActivities.style.display = "none";
+    welcome.style.display = "inline-block";    
+    showAllActivities.style.display = "none";
+})
+}
 
 function signupButton(){
   signupBtn.addEventListener("click", (e) => {
@@ -84,17 +87,31 @@ function signupButton(){
     allActivitiesGrid.style.display = "none";
     loginPage.style.display = "none";
     signupPage.style.display = "block";
-    logout.innerHTML = " "
-    userActivities.innerHTML = " "
+    logout.style.display = "none";
+    userActivities.style.display = "none";
+    welcome.style.display = "inline-block";
+    showAllActivities.style.display = "none";
+    //success.style.display = "none"
   })
+}
 
+function loginBackButton(){
+  loginBtn.addEventListener("click", (e) => {
+    userActivityList.style.display = "none";
+    randomActivityGrid.style.display = "none";
+    allActivitiesGrid.style.display = "none";
+    loginPage.style.display = "block";
+    signupPage.style.display = "none";
+    logout.style.display = "none";
+    userActivities.style.display = "none";
+    welcome.style.display = "inline-block";
+    showAllActivities.style.display = "none";
+  })
 }
 
 function createNewUser(){
     form.addEventListener("submit", (e) => {
         e.preventDefault()
-      console.log(emailInput.value)
-      console.log(usernameInput.value)
         fetch("http://localhost:3000/api/v1/users", {
     method: "POST",
     headers: {
@@ -108,13 +125,12 @@ function createNewUser(){
         }
     }),
   })
-  .then(resp => resp.json())
+  .then(resp => resp.text())
   .then(data => {
-      console.log(data)
-      userId = data.id
-      fetchUserAndActivities(userId);
+        userId = data.id
+        fetchUserAndActivities(userId);
+        //success.style.display = "block"
     })
-   
   })
   form.reset()
 }
@@ -232,8 +248,10 @@ function allActivitiesPage(){
         allActivitiesGrid.style.display = "block";
         loginPage.style.display = "none";
         signupPage.style.display = "none";
-        logout.innerHTML = "Log Out"
-        userActivities.innerHTML = "My Activities"
+        logout.style.display = "inline-block";
+        userActivities.style.display = "inline-block";
+        welcome.style.display = "none";
+        showAllActivities.style.display = "inline-block";
     })
 }
 
@@ -243,8 +261,10 @@ function landingPage(){
   allActivitiesGrid.style.display = "none";
   loginPage.style.display = "block";
   signupPage.style.display = "none";
-  logout.innerHTML = " "
-  userActivities.innerHTML = " "
+  logout.style.display = "none";
+  userActivities.style.display = "none";
+  welcome.style.display = "inline-block";
+  showAllActivities.style.display = "none";
 }
 
 function userActivitiesPage(){
@@ -254,8 +274,10 @@ function userActivitiesPage(){
     userActivityList.style.display = "block";
     loginPage.style.display = "none";
     signupPage.style.display = "none";
-    logout.innerHTML = "Log Out"
-    userActivities.innerHTML = "My Activities"
+    logout.style.display = "inline-block";
+    userActivities.style.display = "inline-block";
+    welcome.style.display = "none";
+    showAllActivities.style.display = "inline-block";
   })
 }
 
@@ -266,4 +288,5 @@ userActivitiesPage();
 createNewUser();
 loginUser();
 signupButton();
-logoutButton()
+logoutButton();
+loginBackButton();

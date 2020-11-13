@@ -17,8 +17,9 @@
             <li id="all-activities">All Activities</li>
             <li id="user-activities">My Activities</li>
             <li id="logout"> Log Out </li>
+            <li id="welcome">Welcome!</li>
         </ul>
-    
+
 <div class="activities-grid">
     <div id="random-btn">
         <button id="rand-btn">Random Activity</button>
@@ -74,29 +75,31 @@
     <div id="signup-page">
         <h3>Create an Account</h3>
         <form id="form">
-            <label for="username-input">Username: </label>
-            <input type="text" name="username-input" id="username-input">
-            <label for="email-input">Email: </label>
-            <input type="text" name="email-input" id="email-input">
-            <label for="password-input">Password: </label>
-            <input type="password" name="password-input" id="password-input">
-            <input type="submit" value="Submit" >
-        </form>
+            <label for="username-input">Username </label><br>
+            <input type="text" name="username-input" id="username-input"><br><br>
+            <label for="email-input">Email </label><br>
+            <input type="text" name="email-input" id="email-input"><br><br>
+            <label for="password-input">Password </label><br>
+            <input type="password" name="password-input" id="password-input"><br><br>
+            <input type="submit" value="Submit" id="submit">
+        </form><br><br>
+        <p id="account-success">Your account was created successfully! You can now login</p>
+        <button id="login-button">Go back to login page</button>
     </div>
 
     <div id="login-page">
         <h3>Log In</h3>
         <form id="login-form">
-            <label for="username-input">Username: </label>
-            <input type="text" name="username-input" id="login-username-input">
-            <label for="email-input">Email: </label>
-            <input type="text" name="email-input" id="login-email-input">
-            <label for="password-input">Password: </label>
-            <input type="password" name="password-input" id="login-password-input">
-            <input type="submit" value="Submit" >
-        </form>
+            <label for="username-input">Username </label><br>
+            <input type="text" name="username-input" id="login-username-input"><br><br>
+            <label for="email-input">Email </label><br>
+            <input type="text" name="email-input" id="login-email-input"><br><br>
+            <label for="password-input">Password </label><br>
+            <input type="password" name="password-input" id="login-password-input"><br><br>
+            <input type="submit" value="Submit" id="submit" >
+        </form><br><br><br>
 
-        <button id="signup-button">Sign Up</button>
+        <button id="signup-button">Create an account</button>
     </div>
 </div>
 <footer>

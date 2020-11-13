@@ -2,6 +2,7 @@
     font-family: pureJoy;
     src: url("Pure Joy.ttf");
 }
+
 .activities-grid{
     display: grid;
     grid-template-areas: "random-btn"
@@ -137,12 +138,13 @@ h1{
     display: grid;
     grid-template-areas: "username2"
                          "user-list2";
-
 }
+
 #username2{
     grid-area: username2;
     text-align: center;
 }
+
 #user-list2{
     grid-area: user-list2;
     text-align: center;
@@ -150,23 +152,19 @@ h1{
     margin-right: auto;
     width: 70%;
     justify-self: center;
-    
-    
-
 }
+
 #user-list{
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     list-style-position: inside;
     list-style-type: none;
-    
-
 }
+
 /* #user-list3{
     display: inline-block;  
-    text-align: left;
-    
+    text-align: left;   
 } */
 
 .new-li{
@@ -193,7 +191,12 @@ h1{
     width: 85%;
     color: #003A70;
     background: rgb(255,255,255), .5;
-  
+    text-align: center;
+  }
+
+  .nav ul{
+    margin: 0 auto;
+    text-align: center;
   }
   
    .nav li {
@@ -201,12 +204,43 @@ h1{
      display: inline-block;
      line-height: 40px;
      padding: 0px 15px;
-     margin: 0px;
+     margin: 0 auto;
      color: #003A70;
      font-family: Arial, Helvetica, sans-serif;
-  
+     text-align: center;
+   }
+   
+   #login-form{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #d1d7e0;
    }
 
+   #form{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #d1d7e0;
+   }
+  
+   #submit{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2d283e;
+    font-weight: bold;
+   }
+
+   #login-button{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2d283e;
+    font-weight: bold;
+   }
+
+   #signup-button{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2d283e;
+    font-weight: bold;
+   }
+   #account-success{
+    color: #d1d7e0;
+   }
+   
    p{
        color: #2d283e;
        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -226,7 +260,6 @@ h1{
 html{
     background-color: #2d283e;
 }
-
 ul {
     padding-inline-start: 0px;
 }
@@ -246,10 +279,8 @@ footer {
     background-color: #2d283e;
     text-align: center;
 }
-
 footer p{
     color: #d1d7e0;
-    
 }
 
    /* .nav li:link{
