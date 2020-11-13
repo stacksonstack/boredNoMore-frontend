@@ -28,7 +28,7 @@ const signupBtn = document.getElementById("signup-button");
 const logout = document.getElementById("logout"); 
 const welcome = document.getElementById("welcome");
 const loginBtn = document.getElementById("login-button");
-//const success = document.getElementById("account-success");
+const success = document.getElementById("account-success");
 let userId;
 
 const allActivities = () => {
@@ -91,7 +91,7 @@ function signupButton(){
     userActivities.style.display = "none";
     welcome.style.display = "inline-block";
     showAllActivities.style.display = "none";
-    //success.style.display = "none"
+    success.style.display = "none"
   })
 }
 
@@ -129,7 +129,7 @@ function createNewUser(){
   .then(data => {
         userId = data.id
         fetchUserAndActivities(userId);
-        //success.style.display = "block"
+        success.style.display = "block"
     })
   })
   form.reset()
